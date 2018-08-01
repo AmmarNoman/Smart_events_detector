@@ -35,7 +35,7 @@ Where **Type** can take 3 values:
 ##### Example:
 The following image represents files management of the day "2015-01-25".
 
-![Data set example] (View/static/img/data_map.png)
+<img src="View/static/img/data_map.png" alt="Data set example">
 
 	Events,2015-01-25,16:29:16,json,/Users/Ramah/Data/Events/InputFolder/20150125/20150125162916_60.07427_30.34051_1000057.json
 	Events,2015-01-25,16:32:38,json,/Users/Ramah/Data/Events/InputFolder/20150125/20150125163238_60.07657_30.33811_1000057.json
