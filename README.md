@@ -3,11 +3,31 @@
   Smart Events Detector Plugin
   <br>
 </h1>
-<h4 align="center">One Step Further Towards Real-Time Driving Maneuver Recognition Using Phone Sensors</h4>
+<h3 align="center">One Step Further Towards Real-Time Driving Maneuver Recognition Using Phone Sensors</h3>
 
 <p align="center">
   <img src="View/static/img/Dashboard_view.png" alt="Dashboard">
 </p>
+
+
+### About
+
+This plugin deals with the problem of driving maneuvers detection, based on smartphones sensors, especially the accelerometer, the gyroscope and GPS sensors. A framework based on a number of deep learning methods, for maneuvers classification and clustering, is introduced. Maneuvers were classified into 15 major classes like: 
+- Idle
+- Lane Change Left
+- Lane Change Right
+- Obstacle Avoid Left
+- Overtake Left
+- 45-Turn Left
+- 45-Turn Right
+- 90-Turn Left
+- 90-Turn Right
+- 180-Turn Left
+- Noise
+
+
+We selected three classifiers, each offering good performance for recognizing our set of activities, and investigated how to combine them into an optimal set of classifiers.
+
 <br>
 
 ## Dataset
@@ -58,7 +78,7 @@ The following image represents files management of the day "2015-01-25".
 
 ## Prepare your dataset for training and validation
 
-#####At this stat we **normalize** your raw data & **generate** csv files from **it** and **hand made event files (json)**.
+##### At this stat we **normalize** your raw data & **generate** csv files from **it** and **hand made event files (json)**.
 
 * **OutTrain.csv** from selected days as training set, thas you can download it, and start your model.
 * **OutCv.csv** from selected days as validation set, thas you can download it, and validate your trained model.
