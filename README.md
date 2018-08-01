@@ -1,90 +1,74 @@
-
 <h1 align="center">
   <br>
-  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/img/markdownify.png" alt="Markdownify" width="200"></a>
-  <br>
-  Electron Markdownify
+  Smart Events Detector Plugin
   <br>
 </h1>
-
-<h4 align="center">This is a minimal Markdown Editor desktop app based on <a href="http://electron.atom.io" target="_blank">Electron</a>.</h4>
+<h4 align="center">One Step Further Towards Real-Time Driving Maneuver Recognition Using Phone Sensors</h4>
 
 <p align="center">
-  <a href="http://electron.atom.io">
-    <img src="https://cdn.rawgit.com/amitmerchant1990/electron-markdownify/d0059441c4440c89f9d098b367fd5d987ac044f2/img/electron-badge.svg" alt="Electron">
-  </a>
-  <a href="https://badge.fury.io/js/electron-markdownify">
-    <img src="https://badge.fury.io/js/electron-markdownify.svg"
-         alt="Gitter">
-  </a>
-  <a href="https://gitter.im/amitmerchant1990/electron-markdownify"><img src="https://badges.gitter.im/amitmerchant1990/electron-markdownify.svg"></a>
-  <a href="https://saythanks.io/to/amitmerchant1990">
-      <img src="https://img.shields.io/badge/SayThanks.io-%E2%98%BC-1EAEDB.svg">
-  </a>
-  <a href="https://www.paypal.me/AmitMerchant">
-    <img src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
-  </a>
+  <img src="View/static/img/Dashboard_view.png" alt="Dashboard">
 </p>
 <br>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/img/markdownify.gif)
+## Dataset
 
-## Key Features
+#### Use our dataset
+	We gathered the original data: it is about 1000 kilometers of video and telemetry data gathered with a phone on the roads.
+	You can freely use it to get start with our plugin.
 
-* LivePreview - Make changes, See changes
-  - Instantly see what your Markdown documents look like in HTML as you create them.
-* Sync Scrolling
-  - While you type, LivePreview will automatically scroll to the current location you're editing.
-* GitHub Flavored Markdown  
-* Syntax highlighting
-* Dark/Light mode
-* Toolbar for basic Markdown formatting
-* Save the Markdown preview as PDF
-* Emoji support in preview :tada:
-* App will keep alive in tray for quick usage
-* Full screen mode
-  - Write distraction free.
-* Cross platform
-  - Windows, Mac and Linux ready.
+#### Use your own dataset
+	In this case you should upload a csv file describe the files distribution in your dataset directory.
+	- ie -  Type, Date, Time, Extension, Absolute path
+Where **Type** can take 3 values:
 
-## How To Use
+* Sensors
+	* You need to have a csv data file in the format specified in the "Csv file format" section (Overview).
 
-Install it using : `npm install electron-markdownify`
+* Events 
+	* If you need to generate **training set** after, then you should create training set with the help of **dashboard**. It means you can record events and save it in json format for further training of model.
+	* But it's not necessary if you just want **predict** this data.
 
-*Or*
+* Video
+	* Video recorded at the same time of csv file.
+	* Subtitles file (srt) for the video. It will only display the data for the period of video.
 
-Clone this repository, and run
+##### Example:
+The following image represents files management of the day "2015-01-25".
 
-```
-$> cd PATH-TO-MARKDOWNIFY-DESKTOP-APP
-$> npm install && npm start
-```
+![Data set example] (static/img/data_map.png)
 
-## Download
+	Events,2015-01-25,16:29:16,json,/Users/Ramah/Data/Events/InputFolder/20150125/20150125162916_60.07427_30.34051_1000057.json
+	Events,2015-01-25,16:32:38,json,/Users/Ramah/Data/Events/InputFolder/20150125/20150125163238_60.07657_30.33811_1000057.json
+	Events,2015-01-25,16:36:00,json,/Users/Ramah/Data/Events/InputFolder/20150125/20150125163600_60.07689_30.33703_1000057.json
+	Events,2015-01-25,16:39:23,json,/Users/Ramah/Data/Events/InputFolder/20150125/20150125163923_60.07679_30.33816_1000057.json
+	Events,2015-01-25,16:42:45,json,/Users/Ramah/Data/Events/InputFolder/20150125/20150125164245_60.07564_30.34149_1000057.json
+	Events,2015-01-25,00:00:00,json,/Users/Ramah/Data/Events/InputFolder/20150125/all.json
+	Sensors,2015-01-25,00:00:00,csv,/Users/Ramah/Data/Sensors/2015-01-25_SensorDatafile.csv
+	Video,2015-01-25,16:29:16,mp4,/Users/Ramah/Data/Video/20150125/20150125162916_60.07427_30.34051_1000057.mp4
+	Video,2015-01-25,16:29:16,srt,/Users/Ramah/Data/Video/20150125/20150125162916_60.07427_30.34051_1000057.srt
+	Video,2015-01-25,16:32:38,mp4,/Users/Ramah/Data/Video/20150125/20150125163238_60.07657_30.33811_1000057.mp4
+	Video,2015-01-25,16:32:38,srt,/Users/Ramah/Data/Video/20150125/20150125163238_60.07657_30.33811_1000057.srt
+	Video,2015-01-25,16:36:00,mp4,/Users/Ramah/Data/Video/20150125/20150125163600_60.07689_30.33703_1000057.mp4
+	Video,2015-01-25,16:36:00,srt,/Users/Ramah/Data/Video/20150125/20150125163600_60.07689_30.33703_1000057.srt
+	Video,2015-01-25,16:39:23,mp4,/Users/Ramah/Data/Video/20150125/20150125163923_60.07679_30.33816_1000057.mp4
+	Video,2015-01-25,16:39:23,srt,/Users/Ramah/Data/Video/20150125/20150125163923_60.07679_30.33816_1000057.srt
+	Video,2015-01-25,16:42:45,mp4,/Users/Ramah/Data/Video/20150125/20150125164245_60.07564_30.34149_1000057.mp4
+	Video,2015-01-25,16:42:45,srt,/Users/Ramah/Data/Video/20150125/20150125164245_60.07564_30.34149_1000057.srt
 
-You can [download](https://github.com/amitmerchant1990/electron-markdownify/releases/tag/v1.2.0) latest installable version of Markdownify for Windows, Darwin and Linux.
 
-## Credits
+## Prepare your dataset for training and validation
 
-This software uses code from several open source packages.
+#####At this stat we **normalize** your raw data & **generate** csv files from **it** and **hand made event files (json)**.
 
-- [Electron](http://electron.atom.io/)
-- [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
-- [showdown](http://showdownjs.github.io/showdown/)
-- [CodeMirror](http://codemirror.net/)
-- Emojis are taken from [here](https://github.com/arvida/emoji-cheat-sheet.com)
-- [highlight.js](https://highlightjs.org/)
+* **OutTrain.csv** from selected days as training set, thas you can download it, and start your model.
+* **OutCv.csv** from selected days as validation set, thas you can download it, and validate your trained model.
+	
+*Note : we get the raw data from the Sensors directory and json files in the Events Directory*
 
-## Related
+## Generate Testset
 
-[markdownify-web](https://github.com/amitmerchant1990/markdownify-web) - Web version of Markdownify
+##### **generate** csv files from **raw data**.
 
-## You may also like...
+## Predict events
 
-- [Pomolectron](https://github.com/amitmerchant1990/pomolectron) - A pomodoro app
-- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS
-
-#### License
-
-MIT
+##### Predict events from generated csv files (Testing set) in **run** page.
