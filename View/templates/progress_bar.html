@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+
+<h1>Blind Motion</h1>
+
+<body>
+	
+	<!-- Single button -->
+	<div class="btn-group">
+	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Action <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu">
+	    <li><a href="/smartEventsDetector">Accueil</a></li>
+	    <li><a href="/smartEventsDetector/getdata">Prepare your Data (Normalize, Filter)</a></li>
+	    <li><a href="/smartEventsDetector/genevents">Generate events from Filtered data to start testing</a></li>
+	    <li role="separator" class="divider"></li>
+	    <li><a href="/smartEventsDetector/bm_dashboard">Dashboard</a></li>
+	  </ul>
+	</div>
+
+	<div class="progress">
+	  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+	    <span class="sr-only">45% Complete</span>
+	  </div>
+	</div>
+
+	
+	                                                                
+
+	
+</body>
+
+{% endblock %}
+

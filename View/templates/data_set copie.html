@@ -1,0 +1,109 @@
+<head>
+    <title>Generate dataset</title>
+    <!-- Include Twitter Bootstrap and jQuery: -->
+	<link rel="stylesheet" href="{{ url_for('smartEventsDetector.static' , filename='bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" type="text/css"/>
+	<script type="text/javascript" src="{{ url_for('smartEventsDetector.static' , filename='jquery-2.1.3.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('smartEventsDetector.static' , filename='bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+	 
+	<!-- Include the plugin's CSS and JS: -->
+	<script type="text/javascript" src="{{ url_for('smartEventsDetector.static' , filename='bootstrap-3.3.7-dist/js/bootstrap-multiselect.js') }}"></script>
+	<link rel="stylesheet" href="{{ url_for('smartEventsDetector.static' , filename='bootstrap-3.3.7-dist/css/bootstrap-multiselect.css') }}" type="text/css"/>
+
+	<style type="text/css">
+		
+		div.input-wrapper{
+		  width:70%;
+		  float:right;
+		  padding:0 0.625em;
+		}
+		.gen {
+		  width:80%;
+		  float:right;
+		  
+		}
+		.multi_select {
+			width:70%;
+		  float:right;
+		  padding:0 0.625em;
+		}
+		.view_color{
+			color:rgb(238,238,238);
+			background-color: rgb(54,54,55);
+		}
+	</style>
+    
+</head>
+
+
+<body class="view_color">
+
+	<form method=post name="prepare_data">
+
+		<h4 style="margin-left:25;">Generate your dataset</h4>
+		
+		<div >
+			<fieldset>
+			    <label class="gen">Generate for : </label>
+			    
+			    <div class="input-wrapper">
+			      <label for="Training">
+			        <input type="radio" name="type_set" value="Training" id="Training"/>
+			        <span>Training</span>
+			      </label>
+			    </div>
+			    
+			    <div class="input-wrapper">
+			      <label for="Validation" >
+			        <input type="radio" name="type_set" value="Validation" id="Validation"/>
+			        <span>Validation</span>
+			      </label>
+			    </div>
+			    
+			    <div class="input-wrapper">    
+			      <label for="Testing">
+			        <input type="radio" name="type_set" value="Testing" id="Testing"/>
+			        <span>Testing</span>
+			      </label>
+			    </div>
+			</fieldset>
+		</div>
+
+		<label class="gen" for="dates-field2">Days :</label>
+		<div class="multi_select">
+			<select name="Days" id="dates-field2" multiple="multiple allSelectedText" >
+			    
+			</select>
+			<br><br>
+
+			<button type="submit" class="btn btn-default" style="margin-top:5%; margin-left:22%;">Generate</button>
+
+		</div>
+		
+	</form>
+
+
+	<script>
+		var array_days = {{ days |safe }};
+		
+		var text = "";
+		for (var key of array_days) {
+			text += "<option value="+key+" >" + key + "</option>";
+		}
+		
+		document.getElementById("dates-field2").innerHTML = text;
+		
+	</script>
+
+
+	<script type="text/javascript">
+	    $(document).ready(function() {
+	        $('#dates-field2').multiselect({
+	            includeSelectAllOption: true,
+	            allSelectedText: 'No option left ...'
+	        });
+	    });
+	</script>
+
+	<div><br></div>
+
+</body>

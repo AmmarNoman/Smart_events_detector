@@ -1,0 +1,75 @@
+input {
+    display: block;
+}
+
+video {
+    display: block;
+    background-color: black;
+    margin: 5px 0 0 0;
+}
+
+body {
+
+}
+
+.menuItem {
+    display: inline-block;
+}
+
+#speedOutput {
+    width: 30px;
+}
+
+.chartItem {
+    display: inline;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.chart {
+    background: #3f3f4f;
+    color:#ffffff;
+    border: 1px solid #ccc;
+    height: 500px;
+    width: 96%;
+    margin: 0 0 10px 0;
+}
+
+.well {
+    background-color: rgba(199, 199, 199, 0.15) !important;
+    border: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+#code-editor {
+    height: 400px;
+    width: 96%;
+}
+
+#placeholder {
+    height: 20px;
+}
+
+#button-save {
+    margin: 10px 0 0 20px;
+}

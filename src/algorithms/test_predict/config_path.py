@@ -1,0 +1,1 @@
+b_path = "./app/plugins/Smart_events_detector/src/algorithms/test_predict"

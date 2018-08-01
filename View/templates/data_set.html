@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Data sets | Smart Events Detector | {{ super() }}
+{% endblock %}
+
+
+{% block content_header %}
+    
+    
+
+    <section class="content-header">
+        <h1>
+        	Data sets
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ url_for('carboard.index') }}"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li><a href="{{ url_for('smartEventsDetector.index') }}">Smart Events Detector</a></li>
+            <li class="active">Data sets</li>
+        </ol>
+    </section>
+{% endblock content_header %}
+
+{% block content %}
+
+<div class="row">
+        <div class="col-md-12">
+            <div class="box">
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">Data sets</h3>
+                </div>
+
+                <div class="box-body markdown">
+
+                <!---->
+                    <iframe src="/smartEventsDetector/datasetifram" style="margin-top:1%; height:600px; width:100%;">
+                      <p>Your browser does not support iframes.</p>
+                    </iframe>
+
+                    <div style="display:none">
+        
+                        <h3>Download your data : </h3>
+                        <a href="workspace/outTrain.csv">Train Set File</a> <br>
+                        <a href="workspace/outCv.csv">Validation Set File</a> <br>
+                        <a href="workspace/events_gen/">Test Set Files</a>
+
+                    </div>
+                
+
+                    
+                
+
+                </div>
+            </div>
+        </div>
+    </div>
+	
+
+{% endblock %}

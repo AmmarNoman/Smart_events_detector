@@ -1,0 +1,39 @@
+{
+    "identifier": "Smart_events_detector",
+    "name": "Smart Events Detector",
+    "author": "SalahEddine Ramah",
+    "license": "BSD",
+    "description": "Detect maneuvers using accelerometer and gyroscope",
+    "version": "1.0.1",
+	"options": {
+		"favorite": true,
+		"treeview": true,
+		"menu": [
+			{
+				"name": "Overview",
+				"action": "smartEventsDetector.index",
+				"iclass": "fa fa-newspaper-o"
+			},
+			{
+				"name": "Data Sets",
+				"action": "smartEventsDetector.dataset",
+				"iclass": "fa fa-database"
+			},
+			{
+				"name": "Run",
+				"action": "smartEventsDetector.predict_test_data",
+				"iclass": "fa fa-cogs"
+			},
+			{
+				"name": "Dashboard",
+				"action": "smartEventsDetector.dashboard",
+				"iclass": "fa fa-pie-chart"
+			},
+			{
+				"name": "Documentation",
+				"action": "smartEventsDetector.docs",
+				"iclass": "fa fa-book"
+			}
+		]
+	}
+}

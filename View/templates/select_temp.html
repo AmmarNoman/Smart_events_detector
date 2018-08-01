@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Analyzer | Smart Events Detector | {{ super() }}
+{% endblock %}
+
+{% block content_header %}
+	<title>Analyzer</title>
+    <section class="content-header">
+        <h1>
+            Analyzer 
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ url_for('carboard.index') }}"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li><a href="{{ url_for('smartEventsDetector.index') }}">Smart Events Detector</a></li>
+            <li class="active">Analyzer</li>
+        </ol>
+    </section>
+{% endblock content_header %}
+
+
+{% block content %}
+<h4>test select day</h4>
+<div class="dropdown" >
+
+	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width:14.5%;">
+		Select a day  
+		<span class="caret"></span>
+	</button>
+
+	<ul id="select_day" class="dropdown-menu" aria-labelledby="dropdownMenu4" style="max-height: 400px ; overflow: scroll;">
+	  <li><a href="#">Regular link</a></li>
+	  <li class="disabled"><a href="#">Disabled link</a></li>
+	  <li><a href="#">Another link</a></li>
+	</ul>
+</div>
+
+
+
+<script>
+	var array_days_times = {{ days |safe }};
+	// Use the regular Map constructor to transform a 2D key-value Array into a map
+	var myDays = new Map(array_days_times);
+
+	var text = "";
+	for (var key of myDays.keys()) {
+		text += "<li><a value="+key+" id="+key+" onclick=\"ShowTimes(this.id)\" href=\"#\">" + key + "</a></li>";
+	}
+	
+	document.getElementById("select_day").innerHTML = text;
+</script>
+
+<script type="text/javascript">
+	function ShowTimes(value){
+		console.log(value);
+
+		var array_days_times = {{ days |safe }};
+		// Use the regular Map constructor to transform a 2D key-value Array into a map
+		var myDays = new Map(array_days_times);
+
+		var text = "";
+		for (var val of myDays.get(value)) {
+			text += "<div class=\"col-sm-6 col-md-4\">"+
+						"<div class=\"thumbnail\">"+
+					      "<img src=\"uploads/1-cc-22105.jpg\" alt=\"...\">"+
+					      "<div class=\"caption\">"+
+					        "<h3>" + val + "</h3>"+
+					        "<p>...</p>"+
+					        "<p><a href=\"#\" class=\"btn btn-primary\" id=\""+val+"\" value=\""+val+"\" onclick=\"GetPath("+value+", this.id)\" role=\"button\">Start</a></p>"+
+					      "</div>"+
+					    "</div>"+
+				    "</div>"
+		}
+		
+		document.getElementById("select_time").innerHTML = text;
+
+	}
+	function GetPath(day, time){
+		var dat = day+" "+time;
+		console.log(day);
+	}
+</script>
+
+
+<div><br></div>
+
+<div class="row" id="select_time" style="max-width: 85%; position: relative; left: 15%; height: 60% ; overflow: scroll;">
+  
+</div>
+
+
+
+  
+
+
+<script type="text/javascript">
+	/*var fs = require('fs');
+	var files = fs.readdirSync('uploads/');
+	var file = files[0];
+    //var videoNode = document.getElementById('player');
+    var fileURL = URL.createObjectURL(file);
+    console.log(fileURL);
+    //videoNode.src = fileURL;*/
+
+</script>
+
+<!--
+		var array_days_times = {{ days |safe }};
+		// Use the regular Map constructor to transform a 2D key-value Array into a map
+		var myDays = new Map(array_days_times);
+
+		var text = "";
+		for (var val of myDays.get(value)) {
+			text += "<a class=\"list-group-item\" id=\""+val+"\" value=\""+val+"\" onclick=\"console.log(this.value)\" href=\"#\">" + val + "</a>";
+		}
+		
+		document.getElementById("select_day").innerHTML = text;
+ -->
+
+
+
+
+{% endblock %}

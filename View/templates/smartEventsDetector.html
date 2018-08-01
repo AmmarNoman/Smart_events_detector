@@ -1,0 +1,359 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Overview | Smart Events Detector | {{ super() }}
+{% endblock %}
+
+{% block content_header %}
+    <section class="content-header">
+        <h1>
+        	Overview of the Smart Events Detector Plugin
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ url_for('carboard.index') }}"><i class="fa fa-dashboard"></i>Home</a></li>
+            <li><a href="{{ url_for('smartEventsDetector.index') }}">Smart Events Detector</a></li>
+            <li class="active">Overview</li>
+        </ol>
+    </section>
+
+    <head>
+		<link rel="stylesheet" href="{{ url_for('smartEventsDetector.static' , filename='mystyle.css') }}" type="text/css"  />
+
+		<style>
+			/* Paste this css to your style sheet file or under head tag */
+			/* This only works with JavaScript, 
+			if it's not present, don't show loader */
+			.no-js #loader { display: none;  }
+			.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+			.se-pre-con {
+			position: fixed;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			z-index: 9999;
+			background: url("{{ url_for('smartEventsDetector.static' , filename='img/Preloader_3.gif') }}") center no-repeat #fff;
+			}
+		</style>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+		<script>
+		//paste this code under head tag or in a seperate js file.
+		// Wait for window load
+		$(window).load(function() {
+			// Animate loader off screen
+			$(".se-pre-con").fadeOut("slow");;
+		});
+		</script>
+
+		<style type="text/css">
+			.p_box_size p, .p_box_size ul {
+				width: 70%;
+    			margin-top: 0;
+    			margin-bottom: 16px
+			}
+			.p_box_size {
+				margin-right:auto;
+				margin-left:auto;
+			}
+		</style>
+	</head>
+
+
+{% endblock content_header %}
+
+{% block content %}
+	<!-- Single button -->
+	<div class="btn-group">
+	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Action <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu">
+	    <li><a href="/smartEventsDetector">Home</a></li>
+	    <li data-toggle="tooltip" data-placement="right" title="Normalize and Filter your data">
+	    	<a href="/smartEventsDetector/getdata">Prepare your Data</a>
+	    </li>
+	    <li data-toggle="tooltip" data-placement="right" title="Generate testset from Filtered data to start testing">
+	    	<a href="/smartEventsDetector/genevents">Generate testset</a>
+	    </li>
+	    <li role="separator" class="divider"></li>
+	    <li data-toggle="tooltip" data-placement="right" title="Display the data">
+	    	<a href="/smartEventsDetector/bm_dashboard">Dashboard</a>
+	    </li>
+	    <li role="separator" class="divider"></li>
+	    <li data-toggle="tooltip" data-placement="right" title="Display test prediction result">
+	    	<a href="/smartEventsDetector/predict">Predict</a>
+	    </li>
+	  </ul>
+	</div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">Overview</h3>
+                </div>
+
+                <div class="box-body markdown">
+
+                    <!-- Paste this code after body tag -->
+					<div class="se-pre-con"></div>
+					<!-- Ends -->
+
+					<!--
+						<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+						<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+						<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+						<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+						<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+						<script src="{{ url_for('smartEventsDetector.static' , filename='myScript.js') }}"></script>
+						<div id="chartdiv"></div>
+					-->
+					
+					
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					  	<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingOne">
+							  <h4 class="panel-title">
+							    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							      <h2>Home</h2>
+							    </a>
+							  </h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+							  <div class="panel-body" style="font-size: 120%; color:rgb(0,0,0);">
+							    <div>
+									<h3>About</h3>
+									<p>
+										Smart Events Detector Project is a project that aims to use data from sensors common for mobile phones: accelerometers, gyroscopes, magnetic sensors, sound, Gps/Glonass to detect turns, overtakes, change of traffic lanes and possibly others. One more direction is to assist global positioning systems in calculation of more precise coordinates, where it does not work so well. On the basis of those sensors the position of a car is predicted.
+									</p>
+								</div>
+								<div>
+									<h3>Roadmap</h3>
+									<img src="{{ url_for('smartEventsDetector.static' , filename='img/roadmap.png') }}" height="100%" width="100%">
+								</div>
+								<div>
+									<h3>Thanks to:</h3>
+									<img src="{{ url_for('smartEventsDetector.static' , filename='img/csc_logo.png') }}">
+									<h4>Alexander Ponomarev</h4>
+								</div>
+								<div>
+									<h3>Thanks to data contributors:</h3>
+									<p>Matvey Sofyin</p>
+								</div>
+
+							  </div>
+							</div>
+					  	</div>
+						<div class="panel panel-default">
+						    <div class="panel-heading" role="tab" id="headingTwo">
+						      <h4 class="panel-title">
+						        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+									<h2>Csv file format</h2>								
+						        </a>
+						      </h4>
+						    </div>
+						    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						      <div class="panel-body" style="font-size: 120%; color:rgb(0,0,0);">
+						      	<h3>Header</h3>
+						      	<p>
+							        info;time;excel time;info text;info comment; <br>
+							        geo;time;excel time;lon;lat;alt;provider;accuracy;course;speed;distance <br>
+							        1-13 (sensors);time;excel time;x;y;z;abs value;RoT/steps <br>action;time;excel time;action type;health;status;charge;plug;level[%];voltage;temperature;technology
+						    	</p>
+								<h3>
+									<a id="user-content-sensors" class="anchor" href="#sensors" aria-hidden="true">
+										<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+											<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+											</path>
+										</svg>
+									</a>
+									Sensors
+								</h3>
+						    	<ul>
+									<li>01 accelerometer</li>
+									<li>02 magnetic field</li>
+									<li>03 orientation</li>
+									<li>04 gyroscope</li>
+									<li>05 light</li>
+									<li>06 pressure</li>
+									<li>07 temperature</li>
+									<li>08 proximity</li>
+									<li>09 gravity</li>
+									<li>10 linear acceleration</li>
+									<li>11 rotation</li>
+									<li>12 rel. humidity</li>
+									<li>13 abm.temperature</li>
+								</ul>
+
+								<h3>
+									<a id="user-content-data-sample" class="anchor" href="#data-sample" aria-hidden="true">
+										<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+											<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+											</path>
+										</svg>
+									</a>
+									Data Sample
+								</h3>
+								<pre lang="csv">
+									<code>
+										geo;11:40:37.835;41899.486549016205;30.3401956;60.0740294;36.0;gps;11.0;0.0;0.0;0.0
+										4;11:40:37.861;41899.48654931713;-0.004;0.021;0.006;0.022203602
+										1;11:40:37.862;41899.48654932871;0.192;5.631;7.968;9.758793;12.0
+										3;11:40:37.863;41899.486549340276;174.289;-35.116;1.138;177.79506;-0.185
+										11;11:40:37.864;41899.48654935185;0.006;-0.301;-0.951;0.99751586
+										10;11:40:37.864;41899.48654935185;-0.002;-0.008;-0.051;0.051662367
+										9;11:40:37.865;41899.48654936343;0.195;5.64;8.02;9.80653
+										2;11:40:37.865;41899.48654936343;-0.605;18.952;48.973;52.5157
+										4;11:40:37.967;41899.48655054398;0.011;-0.028;0.008;0.031128766
+										1;11:40:37.968;41899.48655055556;0.115;5.401;7.968;9.626684;12.0
+									</code>
+								</pre>
+						      </div>
+						    </div>
+						</div>
+						<div class="panel panel-default">
+						    <div class="panel-heading" role="tab" id="headingThree">
+						      <h4 class="panel-title">
+						        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						          <h2>Dashboard</h2>
+						        </a>
+						      </h4>
+						    </div>
+						    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						      <div class="panel-body p_box_size" style="font-size: 120%; color:rgb(0,0,0);">
+						        <p>
+						        	To better understand what's going on we need a convenient tool to view both videos and telemetry data. It contains video view and line charts with data.
+						        </p>
+								<p>
+									<img src="{{ url_for('smartEventsDetector.static' , filename='img/dashboard.png') }}" alt="" height="100%" width="100%">
+								</p>
+								<p>
+									At first you need to select a csv data file in the format specified in the 
+									<a href="#collapseTwo">
+										"Csv file format"
+									</a> 
+									section. We create this csv file with the 
+									<a href="https://play.google.com/store/apps/details?id=net.braun_home.sensorrecording.pro">
+										Sensor Recording
+									</a> program for android.
+								</p>
+								<p>
+									The data is loaded and will be kept in memory until you upload other csv file.
+								</p>
+								<p>
+									The chart will show data as soon as you upload srt (Subtitles file) for the video. It will only display the data for the period of video. To show video itself, upload video file that corresponds to the srt file uploaded.
+								</p>
+								<p>
+									Once everything is set up you can now view video and data for it. Double clicking on chart will play video at the very same moment, where the chart was clicked. You can zoom and scroll chart as you wish.
+								</p>
+								<p>
+									Additionaly you are able to create a preprocessor for the data if you wish to display say moving average of the gyroscope sensor. You cannot modify the number of axes displayes: x,y,z for accelerometer and gyroscope and one axis for speed, but you can change the values of those axis.
+									The preprocessor will get only data for the interval selected. It is programmed in 
+									<a href="http://coffeescript.org/">
+										CoffeeScript
+									</a>
+									.
+								</p>
+								<p>
+									A preprocessor example (multiplies all accelerometer values by 1.5 and gyro by 1.2):
+								</p>
+							<div class="highlight highlight-source-coffee"><pre><span class="pl-c1">window</span>.dataPreprocessor <span class="pl-k">=</span> <span class="pl-smi">(data)</span> <span class="pl-k">=&gt;</span>
+	<span class="pl-k">for</span> el <span class="pl-k">in</span> data
+
+	    <span class="pl-k">switch</span> el[<span class="pl-c1">0</span>]
+	        <span class="pl-k">when</span> <span class="pl-c1">1</span> <span class="pl-c"><span class="pl-c">#</span>accelerometer</span>
+	            el[<span class="pl-c1">3</span>] <span class="pl-k">=</span> el[<span class="pl-c1">3</span>] <span class="pl-k">*</span> <span class="pl-c1">1.5</span> <span class="pl-c"><span class="pl-c">#</span>x</span>
+	            el[<span class="pl-c1">4</span>] <span class="pl-k">=</span> el[<span class="pl-c1">4</span>] <span class="pl-k">*</span> <span class="pl-c1">1.5</span> <span class="pl-c"><span class="pl-c">#</span>y</span>
+	            el[<span class="pl-c1">5</span>] <span class="pl-k">=</span> el[<span class="pl-c1">5</span>] <span class="pl-k">*</span> <span class="pl-c1">1.5</span> <span class="pl-c"><span class="pl-c">#</span>z</span>
+	        <span class="pl-k">when</span> <span class="pl-c1">4</span> <span class="pl-c"><span class="pl-c">#</span>gyroscope</span>
+	            el[<span class="pl-c1">3</span>] <span class="pl-k">=</span> el[<span class="pl-c1">3</span>] <span class="pl-k">*</span> <span class="pl-c1">1.2</span> <span class="pl-c"><span class="pl-c">#</span>x</span>
+	            el[<span class="pl-c1">4</span>] <span class="pl-k">=</span> el[<span class="pl-c1">4</span>] <span class="pl-k">*</span> <span class="pl-c1">1.2</span> <span class="pl-c"><span class="pl-c">#</span>y</span>
+	            el[<span class="pl-c1">5</span>] <span class="pl-k">=</span> el[<span class="pl-c1">5</span>] <span class="pl-k">*</span> <span class="pl-c1">1.2</span> <span class="pl-c"><span class="pl-c">#</span>z</span>
+	        <span class="pl-k">when</span> <span class="pl-s"><span class="pl-pds">'</span>geo<span class="pl-pds">'</span></span> <span class="pl-c"><span class="pl-c">#</span>geodata</span>
+	            el[<span class="pl-c1">9</span>] <span class="pl-k">=</span> el[<span class="pl-c1">9</span>] <span class="pl-k">/</span> <span class="pl-c1">2</span> <span class="pl-c"><span class="pl-c">#</span>speed</span>
+	                
+	<span class="pl-k">return</span> data</pre></div>
+								<p>
+									Dashboard should work in any modern browser, however we recommend to use browser on the base of Chromium because it works faster.
+								</p>
+						<h3>
+							<a id="user-content-hotkeys" class="anchor" href="#hotkeys" aria-hidden="true">
+								<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+									<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+									</path>
+								</svg>
+							</a>
+							Hotkeys
+						</h3>
+						<p>s - pause/resume video</p>
+						<p>a - rewind back</p>
+						<p>d - rewind forward</p>
+						<p>Hotkeys work only when event target is body. If it does not work, click somewhere on the page.</p>
+						<h3>
+							<a id="user-content-instruments-to-create-a-training-set" class="anchor" href="#instruments-to-create-a-training-set" aria-hidden="true">
+								<svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16">
+									<path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z">
+									</path>
+								</svg>
+							</a>
+							Instruments to create a training set
+						</h3>
+						<p>
+							A user can create training set with the help of dashboard. It means he can record events and save it in json format for further training of model.
+						</p>
+						<p>
+							To do it he first needs to load video and srt files. After it event capturing panel will be activated.
+						</p>
+						<p>
+							<img src="{{ url_for('smartEventsDetector.static' , filename='img/events_export.png') }}" alt="" height="100%" width="100%">
+						</p>
+						<p>
+							At the end we will get a list of events. Each event represents the following structure:
+						</p>
+						<pre><code>{
+	type int
+	direction int
+	start time
+	end time
+}
+</code></pre>						
+						<p>
+							To start capturing an event a user presses W, the right panel will be activated with ability to select the type of event and the direction of event. After they are selected, the save button will become visible. The start time is fixed when W is pressed, the end time will be fixed and the event will be saved after ENTER press. You can cancel capture of specific event at any time pressing ESC.
+					    </p>
+						<p>
+							When you captured all events you wanted and reached the end of the video, then press E to export all data as a json file. The file name will be as same as the name of the video + json resolution.
+							You can reset all captured events at any time by pressing R. After export action the events will be reset too.
+						</p>
+
+
+						      </div>
+						    </div>
+						  </div>
+						<!--<div class="panel panel-default">
+						    <div class="panel-heading" role="tab" id="headingFour">
+						      <h4 class="panel-title">
+						        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+						          Collapsible Group Item #4
+						        </a>
+						      </h4>
+						    </div>
+						    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+						      <div class="panel-body" style="font-size: 120%; color:rgb(0,0,0);">
+						        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						      </div>
+						    </div>
+						  </div>-->
+					</div>
+
+					
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
